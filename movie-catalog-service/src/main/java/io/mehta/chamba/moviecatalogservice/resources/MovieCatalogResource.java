@@ -11,8 +11,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import io.mehta.chamba.moviecatalogservice.models.CatalogItem;
-import io.mehta.chamba.moviecatalogservice.models.Movie;
 import io.mehta.chamba.moviecatalogservice.models.UserRating;
+import io.mehta.chamba.moviecatalogservice.service.MovieInfo;
+import io.mehta.chamba.moviecatalogservice.service.UserRatingInfo;
 
 @RestController
 @RequestMapping("/catalog")
@@ -23,15 +24,20 @@ public class MovieCatalogResource {
 
 	@Autowired
 	private WebClient.Builder webClientBuilder;
+	
+	@Autowired
+	MovieInfo movieInfo;
+	
+	@Autowired
+	UserRatingInfo userRatingInfo;
 
 	@RequestMapping("/{userId}")
 	public List<CatalogItem> getCatalog(@PathVariable("userId") String userId){
 
-		UserRating ratings= restTemplate.getForObject("http://ratings-data-service/ratingsdata/users/"+ userId, UserRating.class); 
+		UserRating ratings= userRatingInfo.getUserRating(userId); 
 
 		return ratings.getUserRating().stream().map(rating ->{
-			Movie movie = restTemplate.getForObject("http://movie-info-service/movies/"+ rating.getMovieId(), Movie.class);
-			return new CatalogItem(movie.getName(),"Description",rating.getRating());
+			return movieInfo.getCatalogItem(rating);
 		}).collect(Collectors.toList());
 
 
