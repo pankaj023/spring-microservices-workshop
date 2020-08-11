@@ -25,10 +25,10 @@ public class MovieCatalogResource {
 	@Autowired
 	private WebClient.Builder webClientBuilder;
 	
-	@Autowired
+	@Autowired(required = false)
 	MovieInfo movieInfo;
 	
-	@Autowired
+	@Autowired()
 	UserRatingInfo userRatingInfo;
 
 	@RequestMapping("/{userId}")
@@ -43,6 +43,10 @@ public class MovieCatalogResource {
 
 		/*return Collections.singletonList(
 				new CatalogItem("Jeet", "Test",4 ));*/
+	}
+	@RequestMapping("/status")
+	public String getSatus() {
+		return "movie-catalog-service";
 	}
 }
 

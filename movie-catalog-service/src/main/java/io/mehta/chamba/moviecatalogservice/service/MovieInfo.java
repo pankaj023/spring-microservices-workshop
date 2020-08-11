@@ -10,7 +10,7 @@ import io.mehta.chamba.moviecatalogservice.models.CatalogItem;
 import io.mehta.chamba.moviecatalogservice.models.Movie;
 import io.mehta.chamba.moviecatalogservice.models.Rating;
 
-@Service
+
 public class MovieInfo {
 	
 	@Autowired

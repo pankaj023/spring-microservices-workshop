@@ -1,5 +1,5 @@
 
-public class ReverseString {
+public class ReverseString implements Cloneable{
 	 static String rev;
 	  public static String reverse(String str) 
 	    { 
@@ -11,8 +11,9 @@ public class ReverseString {
 	            return str.substring(str.length()-1) + reverse(str.substring(0,str.length()-1)); 
 	        } 
 	    } 
+	  
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws CloneNotSupportedException {
 		String s = "sachin";
 		for (int i =s.length()-1; i>=0;i--) {
 			s=s + s.toCharArray()[i];
@@ -23,7 +24,8 @@ public class ReverseString {
 		System.out.println(s2.substring(0,s2.length()-1));
 		System.out.println(s2.substring(s2.length()-1));
 	
-		
+		ReverseString a = new ReverseString();
+		ReverseString b =(ReverseString) a.clone();
 
 	}
 

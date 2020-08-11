@@ -27,4 +27,9 @@ public class MovieResource {
         
 		return new Movie(movieId,"test name","test desc");
 	}
+	
+	@RequestMapping("/status")
+	public String getSatus() {
+		return "movie-info-service";
+	}
 }

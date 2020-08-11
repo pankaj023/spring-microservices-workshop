@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Core Java - Interview Preparation</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">JavaPrep</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Core Java</h1>
+			<h2>Interview Preparation</h2>
+            <span class="meta">
+              <a href="#">last updated on</a>
+               June 24, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+   <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-15 mx-auto">
+		
+		<h2>Why string class is immutable in Java</h2>
+         <p>
+			<span class="dot"></span> String pool is possible only because String is immutable in Java. This way Java Runtime saves a lot of heap space because different 
+			String variables can refer to the same String variable in the pool. If String would not have been immutable, then String interning would not have been possible 
+			because if any variable would have changed the value, it would have been reflected in the other variables too.<br/><br/>
+			
+			<span class="dot"></span> If String is not immutable then it would cause a severe security threat to the application. For example, database username, password are 
+			passed as String to get database connection and in socket programming host and port details passed as String. Since String is immutable, its value can’t be 
+			changed otherwise any hacker could change the referenced value to cause security issues in the application.<br/><br/>
+
+			<span class="dot"></span> Since String is immutable, it is safe for multithreading. A single String instance can be shared across different threads. 
+			This avoids the use of synchronization for thread safety. Strings are implicitly thread-safe.<br/><br/>
+			
+			<span class="dot"></span> Strings are used in java classloader and immutability provides security that correct class is getting loaded by Classloader. 
+			For example, think of an instance where you are trying to load java.sql.Connection class but the referenced value is changed to myhacked.
+			Connection class that can do unwanted things to your database. Since String is immutable, its hashcode is cached at the time of creation and it doesn’t need to be 
+			calculated again. This makes it a great candidate for the key in a Map and its processing is faster than other HashMap key objects. 
+			This is why String is the most widely used as HashMap keys.<br/>
+		</p>
+		<h2>Array vs ArrayList</h2>
+         <p>
+			<span class="dot"></span> Array: int arr[] = new int[10]<br/>
+			ArrayList: ArrayList<type> arrList = new ArrayList<>();<br/><br/>
+			
+			<span class="dot"></span> An array is basic functionality provided by Java. ArrayList is part of collection framework in Java. 
+			Therefore array members are accessed using [], while ArrayList has a set of methods to access elements and modify them.<br/><br/>
+
+			<span class="dot"></span> Array is a fixed size data structure while ArrayList is not. One need not to mention the size of Arraylist while creating its object. 
+			Even if we specify some initial capacity, we can add more elements.<br/><br/>
+			
+			<span class="dot"></span> Array can contain both primitive data types as well as objects of a class depending on the definition of the array.
+			However, ArrayList only supports object entries, not the primitive data types.
+			Note: When we do arraylist.add(1); it converts the primitive int data type into an Integer object.<br/><br/>
+			
+			<span class="dot"></span> Since ArrayList cant be created for primitive data types, members of ArrayList are always references to objects at different memory locations. 
+			Therefore in ArrayList, the actual objects are never stored at contiguous locations. References of the actual objects are stored at contiguous locations.
+			In array, it depends whether the arrays is of primitive type or object type. In case of primitive types, actual values are contiguous locations,
+			but in case of objects, allocation is similar to ArrayList.<br/>
+			
+		<h2>ArrayList vs LinkedList</h2>
+		<p>
+	<span class="dot"></span>
+			ArrayList - Implemented with the concept of dynamic array. <br/>
+			LinkedList - Implemented with the concept of doubly linked list. <br/>
+	<br/>
+	<span class="dot"></span> Insertions and Removal  are easy and fast in LinkedList as compared to ArrayList because there is no
+			risk of re sizing array and copying content to new array if array gets full which makes
+			adding into ArrayList of O(n) in worst case, while adding is O(1) operation in LinkedList
+			in Java. ArrayList also needs to be update its index if you insert something anywhere except
+			at the end of array.<br/>
+	<br/>
+
+	<span class="dot"></span> LinkedList has more memory overhead than ArrayList because in ArrayList each index only
+			holds actual object (data) but in case of LinkedList each node holds both data and address
+			of next and previous node.<br/>
+	<br/>
+
+	<span class="dot"></span> Both LinkedList and ArrayList require O(n) time to find if an element is present or not. However we can do Binary Search on ArrayList if it is sorted and therefore can search in O(Log n) time.
+	<pre><code class="java-code">Collections.binarySearch(arrayList, 10);
+Collections.binarySearch(arrayList, 50,Collections.reverseOrder());</pre></code> 
+<b>Binary search on Custom Objects: </b>
+<pre><code class="java-code">
+public static void main(String[] args) 
+{ 
+     <code class="code-comment">// Create a list </code class="code-comment"> 
+     List<Domain> l = new ArrayList<Domain>(); 
+     l.add(new Domain(10, "qwerty")); 
+     l.add(new Domain(20, "doomon.in")); 
+     l.add(new Domain(30, "code.doomon.org")); 
+     l.add(new Domain(40, "www.doomon.org")); 
+  
+     Comparator<Domain> c = new Comparator<Domain>() 
+     { 
+         public int compare(Domain u1, Domain u2) 
+         { 
+            return u1.getId().compareTo(u2.getId()); 
+         } 
+     }; 
+  
+     <code class="code-comment">// Searching a domain with key value 20. To search </code class="code-comment">
+     int index = Collections.binarySearch(l, 
+                            new Domain(20, null), c); 
+     System.out.println("Found at index  " + index); 
+}
+
+</pre></code class="java-code">
+			For the best implementation of Binary search we need two prerequisites:<br/>
+			1. The list must be in sorted order.<br/>
+			2. Any random element can be accessed in constant time.<br/>
+
+	<b>Note:</b> With linked list the second prerequisite is not satisfied as any random element in linked list cannot be accessed in constant time, but it must be traversed completely.
+</p>
+
+
+
+<h2>Hashmap internal working</h2>
+<p><span class="dot"></span> HashMap in Java works on hashing principle. It is a data structure which allows us to store object and retrieve it in constant time O(1) provided we know the key. In hashing, hash functions are used to link key and value in HashMap. Objects are stored by calling <code class="java-code">put(key, value)</code> method of HashMap and retrieved by calling <code class="java-code">get(key)</code> method.</br></br> 
+
+<span class="dot"></span> When we call put method, <code class="java-code">hashcode()</code> method of the key object is called so that hash function of the map can find a bucket location to store value object, which is actually an index of the internal array, known as the table. HashMap internally stores mapping in the form of Map.Entry object which contains both key and value object.</br></br>
+
+<span class="dot"></span> When we want to retrieve the object, call the <code class="java-code">get()</code> method and again pass the key object. This time again key object generate same hash code and we end up at same bucket location. If there is only one object then it is returned and that's our value object which you have stored earlier.</br></br>
+
+<span class="dot"></span> Since the internal array of HashMap is of fixed size, and if you keep storing objects, at some point of time hash function will return same bucket location for two different keys, this is called <b>collision in HashMap</b>. In this case, a linked list is formed at that bucket location and a new entry is stored as next node.
+If we try to retrieve an object from this linked list, we need an extra check to search correct value, this is done by <code class="java-code">equals()</code> method. Since each node contains an entry, HashMap keeps comparing entry's key object with the passed key using <code class="java-code">equals()</code> and when it return true, Map returns the corresponding value.
+</p>	
+
+<h2>Why HashMap not in collection framework</h2>
+<p><span class="dot"></span> It is by design and Maps work with key/value pairs, while the other collections work with just values. Map maps keys to values. It allows its content to be viewed as a set of keys, a collection of  values and a set of key-value mappings. <br/>
+<b>Note:</b> "The collection framework" and “Collection  interface” are not the same thing.</p>
+
+
+<h2>HashMap performance Improvement Changes in Java 8</h2>
+<p><span class="dot"></span> JDK 8’s new strategy for dealing with Hash collisions. Earlier before Java 8, the performance of the HashMap was poor due to the hash collision, it degrades the performance of HashMap significantly. This change can be notifiable only when if we are using the HashMap for a large number of elements.</br></br>
+
+<span class="dot"></span> The traversal of HashMap, get(), and other methods lookup time of HashMap have a negative impact due to hash collisions. This situation we can face when multiple keys end up in the same bucket, then values along with their keys are placed in a linked list. So, the retrieval time of elements from HashMap increases from O(1) to O(n). Because the linked list has to be traversed to get the entry in the worst case scenario.</br></br>
+
+<span class="dot"></span> But Java 8 has come with the following new strategy for HashMap objects in case of high collisions.
+To address this issue, Java 8 hash elements use balanced trees instead of linked lists after a certain threshold is reached. Which means HashMap starts with storing Entry objects in a linked list but after the number of items in a hash becomes larger than a certain threshold. The hash will change from using a linked list to a balanced tree.
+Above changes ensure the performance of O(log(n)) in worst case scenarios and O(1) with proper hashCode().
+The alternative String hash function added in Java 7 has been removed.</br></p>
+
+<h2>Sort Hashmap by value and key</h2>
+<pre><code class="java-code"><code class="code-comment">// by value</code class="code-comment">
+
+public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm) {
+	<code class="code-comment">// Create a list from elements of HashMap</code class="code-comment">
+	List<Map.Entry<String, Integer> > list = new LinkedList<Map.Entry<String, Integer> >(hm.entrySet());
+	<code class="code-comment">// Sort the list</code class="code-comment">
+	Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+		@Override
+		public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+			return (o1.getValue()).compareTo(o2.getValue());
+		}
+	});
+	<code class="code-comment">// put data from sorted list to hashmap</code class="code-comment">
+	HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>(); 
+	for (Map.Entry<String, Integer> aa : list) { 
+		temp.put(aa.getKey(), aa.getValue()); 
+	} 
+	return hm;
+}
+</code></pre>
+<pre><code class="java-code"><code class="code-comment">// by key</code class="code-comment">
+
+TreeMap<String, Integer> sorted = new TreeMap<>(map);
+<code class="code-comment">// OR </code class="code-comment">
+TreeMap<String, Integer> sorted = new TreeMap<>(); 
+<code class="code-comment">// Copy all data from hashMap into TreeMap </code class="code-comment">
+sorted.putAll(map); 
+<code class="code-comment">// Display the TreeMap which is naturally sorted </code class="code-comment">
+for (Map.Entry<String, Integer> entry : sorted.entrySet())  
+	System.out.println("Key = " + entry.getKey() +", Value = " + entry.getValue());
+</code></pre><br/>	
+
+<h2>Check two Hashmaps are equal</h2><br/>
+<pre><code class="java-code">map1.equals(map2);<code class="code-comment"> //check key and values as equals </code class="code-comment">
+map1.keySet().equals(map2.keySet());<code class="code-comment"> //Check only key sets </code class="code-comment">
+new ArrayList<>(map1.values()).equals(new ArrayList<>(map2.values()));<code class="code-comment"> //Check only values </code class="code-comment">
+new HashSet<>(map1.values()).equals(new HashSet<>(map2.values()));<code class="code-comment"> //allowed duplicates here </code class="code-comment">
+</code></pre>
+<p><span class="dot"></span> Please note that in case of custom classes as key or value we need to override the equals and hashcode method.</p>	
+
+<h2>Check two objects are same in Hashset. Override Equals and Hashcode methods.</h2>
+<p>Override Equals and Hashcode method of the custom class using the fields.<br/>
+Object a = new Object ("pankaj","1");<br/>
+Object b = new Object ("pankaj","1");<br/>
+Now only one object will be stored in Hashset because hashcode and equals methods are overriden as shown below.</p>
+<pre><code class="java-code"><code class="code-comment">//hashCode </code class="code-comment">
+public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result + ((id == null) ? 0 : id.hashCode());
+	result = prime * result + ((name == null) ? 0 : name.hashCode());
+	return result;
+}
+
+<code class="code-comment">//equals </code class="code-comment">
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	SetCustomClass other = (SetCustomClass) obj;
+	if (id == null) {
+		if (other.id != null)
+			return false;
+	} else if (!id.equals(other.id))
+		return false;
+	if (name == null) {
+		if (other.name != null)
+			return false;
+	} else if (!name.equals(other.name))
+		return false;
+	return true;
+}
+</code></pre>	
+
+
+<h2>Fail-fast vs Fail-safe : ConcurrentModificationException</h2>
+<p><span class="dot"></span> fail-fast Iterators fail as soon as they realized that structure of Collection has been changed since iteration has begun. Structural changes means adding, removing or updating any element from collection while one thread is Iterating over that collection. fail-fast behavior is implemented by keeping a modification count and if iteration thread realizes the change in modification count it throws ConcurrentModificationException.<br/><br/>
+
+<span class="dot"></span> fail-safe iterator doesn't throw any Exception if Collection is modified structurally while one thread is Iterating over it because they work on clone of Collection instead of original collection and that’s why they are called as fail-safe iterator. Iterator of CopyOnWriteArrayList is an example of fail-safe Iterator also iterator written by ConcurrentHashMap keySet is also fail-safe iterator and never throw ConcurrentModificationException in Java.<br/><br/>
+
+<b>To Avoid ConcurrentModificationException in single-threaded environment</b><br/></br>
+<span class="dot"></span> Use the iterator remove() function to remove the object from underlying collection object. But in this case, you can remove the same object and not any other object from the list.<br/><br/>
+
+<b>To Avoid ConcurrentModificationException in multi-threaded environment</b><br/></br>
+<span class="dot"></span> Convert the list to an array and then iterate on the array. This approach works well for small or medium size list but if the list is large then it will affect the performance a lot.<br/>
+<span class="dot"></span> Lock the list while iterating by putting it in a synchronized block. This approach is not recommended because it will cease the benefits of multithreading.<br/>
+<span class="dot"></span> Use ConcurrentHashMap and CopyOnWriteArrayList classes. This is the recommended approach to avoid concurrent modification exception.<br/></p>
+
+	
+
+<h2>HashMap vs LinkedHashMap vs TreeMap vs Hashtable</h2>
+<p><span class="dot"></span><b> HashMap:</b> HashMap offers 0(1) lookup and insertion. If you iterate through the keys, though, the ordering of the keys is essentially arbitrary. 
+It is implemented by an array of linked lists.
+<pre><code class="java-code">public class HashMap extends AbstractMap implements Map, Cloneable, Serializable</code></pre>
+<span class="dot"></span> A HashMap contains values based on the key.<br/>
+<span class="dot"></span> It contains only unique elements.<br/>
+<span class="dot"></span> It may have one null key and multiple null values.<br/>
+<span class="dot"></span> It maintains no order.<br/><br/>
+
+<span class="dot"></span><b> LinkedHashMap:</b>  LinkedHashMap offers 0(1) lookup and insertion. Keys are ordered by their insertion order. It is implemented by doubly-linked buckets.<br/><br/>
+<pre><code class="java-code">public class LinkedHashMap extends HashMap implements Map</code></pre>
+<span class="dot"></span> A LinkedHashMap contains values based on the key.<br/>
+<span class="dot"></span> It contains only unique elements.<br/>
+<span class="dot"></span> It may have one null key and multiple null values.<br/>
+<span class="dot"></span> It is same as HashMap instead maintains insertion order.<br/><br/>
+
+<span class="dot"></span><b> TreeMap:</b>  TreeMap offers O(log N) lookup and insertion. Keys are ordered, so if you need to iterate through the keys in sorted order, you can. This means that keys must implement the Comparable interface. TreeMap is implemented by a Red-Black Tree.<br/><br/>
+<pre><code class="java-code">public class TreeMap extends AbstractMap implements NavigableMap, Cloneable, Serializable</code></pre>
+<span class="dot"></span> A TreeMap contains values based on the key. It implements the NavigableMap interface and extends AbstractMap class.<br/>
+<span class="dot"></span> It contains only unique elements.<br/>
+<span class="dot"></span> It cannot have null key but can have multiple null values.<br/>
+<span class="dot"></span> It is same as HashMap instead maintains ascending order(Sorted using the natural order of its key).<br/><br/>
+
+<span class="dot"></span><b> Hashtable:</b>  “Hashtable” is the generic name for hash-based maps.<br/><br/>
+<pre><code class="java-code">public class Hashtable extends Dictionary implementsMap, Cloneable, Serializable</code></pre>
+<span class="dot"></span> A Hashtable is an array of list. Each list is known as a bucket. The position of bucket is identified by calling the hashcode() method. A Hashtable contains values based on the key.<br/>
+<span class="dot"></span> It contains only unique elements.<br/>
+<span class="dot"></span> It may have not have any null key or value.<br/>
+<span class="dot"></span> It is synchronized.<br/>
+<span class="dot"></span> It is a legacy class.<br/><br/>
+</p>
+
+
+<h2>HashMap vs HashTable vs SynchronisedMap vs ConcurrentHashMap</h2><br/>
+<img src="img/hashmap.png" alt="HashMap vs HashTable vs SynchronisedMap vs ConcurrentHashMap" width="600" height="600"> <br/><br/>
+
+<h2>Comparable vs Comparator</h2><br/>
+<img src="img/comparable.png" alt="Comparable vs Comparator" width="900" height="500"> <br/><br/>
+
+
+<h2>Chained Comparator: Sort a List by multiple attributes</h2>
+<p>
+<span class="dot"></span> Suppose we have a class Employee having three variables JobTitle, age and salary and we need to sort using all three variables.
+Use Chained Comparator- Create three sorting sequence class for Employee using Comparator interface.
+And then pass to chained Comparator as shown below.<br/>
+<pre><code class="java-code">public class EmployeeChainedComparator implements Comparator<Employee> {
+ 
+    private List<Comparator<Employee>> listComparators;
+ 
+    @SafeVarargs
+    public EmployeeChainedComparator(Comparator<Employee>... comparators) {
+        this.listComparators = Arrays.asList(comparators);
+    }
+ 
+    @Override
+    public int compare(Employee emp1, Employee emp2) {
+        for (Comparator<Employee> comparator : listComparators) {
+            int result = comparator.compare(emp1, emp2);
+            if (result != 0) {
+                return result;
+            }
+        }
+        return 0;
+    }
+}
+
+<code class="code-comment">//Job title comparator: </code>
+public class EmployeeJobTitleComparator implements Comparator<Employee> {
+ 
+    @Override
+    public int compare(Employee emp1, Employee emp2) {
+        return emp1.getJobTitle().compareTo(emp2.getJobTitle());
+    }
+}
+
+<code class="code-comment">//Age comparator: </code>
+public class EmployeeAgeComparator implements Comparator<Employee> {
+ 
+    @Override
+    public int compare(Employee emp1, Employee emp2) {
+        return emp1.getAge() - emp2.getAge();
+    }
+}
+
+<code class="code-comment">//Salary comparator: </code>
+public class EmployeeSalaryComparator implements Comparator<Employee> {
+ 
+    @Override
+    public int compare(Employee emp1, Employee emp2) {
+        return emp1.getSalary() - emp2.getSalary();
+    }
+}
+
+<code class="code-comment">//Main: Pass all three comparator to Chained comparator to sort using all variables. </code>
+Collections.sort(listEmployees, new EmployeeChainedComparator(
+                new EmployeeJobTitleComparator(),
+                new EmployeeAgeComparator(),
+                new EmployeeSalaryComparator())
+        );
+</code></pre>
+</p>
+
+<h2>Final Reference to an Object</h2>
+<p><span class="dot"></span> In final reference we cannot change the reference but we can change the object values. That is the main difference between final reference and immutable class.<br/>
+Final means that you can't change the object's reference to point to another reference or another object, but you can still mutate its state (using setter methods)<br/> 
+Where <b>immutable</b> means that the object's actual value can't be changed, but you can change its reference to another one.<br/> 
+</p>
+
+
+<h2>OutOfMemoryError vs StackOverflowError</h2>
+<p>
+<span class="dot"></span> OutOfMemoryError is related to Heap.<br/>
+<span class="dot"></span> StackOverflowError is related to stack.<br/><br/>
+
+<span class="dot"></span> When you start JVM you define how much RAM it can use for processing. JVM divides this into certain memory locations for its processing purpose, two of those are Stack & Heap
+If you have large objects (or) referenced objects in memory, then you will see <b>OutofMemoryError</b>. If you have strong references to objects, then GC can't clean the memory space allocated for that object. When JVM tries to allocate memory for new object and not enough space available it throws <b>OutofMemoryError</b> because it can't allocate the required amount of memory.<br/><br/>
+<span class="dot"></span> <b>How to avoid:</b> Make sure un-necessary objects are available for GC. <br/><br/>
+
+<span class="dot"></span> All your local variables and methods calls related data will be on the stack. For every method call, one stack frame will be created and local as well as method call related data will be placed inside the stack frame. Once method execution is completed, the stack frame will be removed. ONE WAY to reproduce this is, have an infinite loop for method call, you will see <b>StackOverflowError</b>, because stack frame will be populated with method data for every call but it won't be freed (removed). <br/><br/>
+<b>How to avoid:</b> Make sure method calls are ending (not in an infinite loop)<br/><br/>
+
+</p>
+	
+<h2>ClassNotFoundException Vs NoClassDefFoundError</h2><br/>
+<img src="img/classnotfound.png" alt="ClassNotFoundException Vs NoClassDefFoundError" width="900" height="500"> <br/><br/>
+
+
+<h2>Java.lang.ThreadLocal class in Java</h2>
+<p><span class="dot"></span> The Java ThreadLocal class enables you to create variables that can only be read and written by the same thread. Thus, even if two threads are executing the same code, and the code has a reference to the same ThreadLocal variable, the two threads cannot see each other's ThreadLocal variables. Thus, the Java ThreadLocal class provides a simple way to make code thread safe that would not otherwise be so.</p>	
+<pre><code class="java-code">private ThreadLocal threadLocal = new ThreadLocal();
+threadLocal.set("A thread local value");
+String threadLocalValue = (String) threadLocal.get();
+threadLocal.remove();	</code></pre>	
+
+
+
+<h2>Why wait in object class (Object has monitors)</h2>
+<p><span class="dot"></span> Multiple threads can access one Object. Only one thread can hold object monitor at a time for synchronized methods/blocks.<br/>
+<code class="java-code">wait(), notify(), notifyAll()</code> method being in Object class allows all the threads created on that object to communicate with other.
+Locking ( using synchronized or Lock API) and Communication (wait() and notify()) are two different concepts.<br/><br/>
+
+If Thread class contains <code class="java-code">wait(), notify(), notifyAll()</code> methods, then it will create below problems:<br/>
+<span class="dot"></span> Thread communication problem<br/>
+<span class="dot"></span> Synchronization on object won’t be possible. If each thread will have monitor, we won’t have any way of achieving synchronization<br/>
+<span class="dot"></span> Inconsistency in state of object. <br/><br/>
+
+<span class="dot"></span> If wait() and notify() were on the Thread instead then each thread would have to know the status of every other thread. How would thread1 know that thread2 was waiting for access to a particular resource? If thread1 needed to call <code class="java-code">thread2.notify()</code> it would have to somehow find out that thread2 was waiting. There would need to be some mechanism for threads to register the resources or actions that they need so others could signal them when stuff was ready or available.</p>
+
+<h2>yield vs Join vs sleep</h2>
+<p><span class="dot"></span> <code class="java-code">yield()</code> method pauses the currently executing thread temporarily for giving a chance to the remaining waiting threads of the same priority to execute. If there is no waiting thread or all the waiting threads have a lower priority then the same thread will continue its execution. The yielded thread when it will get the chance for execution is decided by the thread scheduler whose behavior is vendor dependent.<br/><br/>
+
+<span class="dot"></span><code class="java-code">join()</code> If any executing thread t1 calls join() on t2 i.e; t2.join() immediately t1 will enter into waiting state until t2 completes its execution.<br/><br/>
+
+<span class="dot"></span><code class="java-code">sleep()</code> Based on our requirement we can make a thread to be in sleeping state for a specified period of time (hope not much explanation required for our favorite method).<br/>
+</p>
+
+<h2>Singleton design pattern</h2>
+<p><span class="dot"></span> We need to have static member of class, private constructor and static factory method.<br/>
+<b>Static member:</b> It gets memory only once because of static, it contains the instance of the Singleton class.<br/>
+<b>Private constructor:</b> It will prevent to instantiate the Singleton class from outside the class.<br/>
+<b>Static factory method:</b> This provides the global point of access to the Singleton object and returns the instance to the caller.<br/><br/>
+<pre><code class="java-code">class Singleton{  
+	private static Singleton obj;  
+	private Singleton(){}  
+
+	public static Singleton getA(){  
+		if (obj == null){  
+			synchronized(Singleton.class){  
+				if (obj == null){ 
+					<code class="code-comment">//instance will be created at request time </code>
+					obj = new Singleton();  
+				}  
+			}              
+		}  
+		return obj;  
+	}  
+}</code></pre>
+</p>
+
+<h2>Immutable class</h2>
+<p><span class="dot"></span> There are many immutable classes like String, Boolean, Byte, Short, Integer, Long, Float, Double etc. In short, all the wrapper classes and String class is immutable. We can also create immutable class by creating final class that have final data members as the example given below:<br/><br/>
+<pre><code class="java-code">public final class Employee{  
+	final String pancardNumber;  
+			  
+	public Employee(String pancardNumber){  
+		this.pancardNumber=pancardNumber;  
+	}  
+			  
+	public String getPancardNumber(){  
+		return pancardNumber;  
+	}  
+}</code></pre>
+
+<b>To create a custom immutable class we have to do the following steps</b><br/><br/>
+<span class="dot"></span> Declare the class as final so it can’t be extended. If class is not final, one can extend this class and change the behavior using  super in the constructor.<br/>
+<span class="dot"></span> Make all fields private so that direct access is not allowed.<br/>
+<span class="dot"></span> Do not provide setter methods (methods that modify fields) for variables, so that it can not be set.<br/>
+<span class="dot"></span> Make all mutable fields final so that their values can be assigned only once.<br/>
+<span class="dot"></span> Initialize all the fields through a constructor doing the deep copy.<br/>
+<span class="dot"></span> Perform cloning of objects in the getter methods to return a copy rather than returning the actual object reference.<br/>
+<span class="dot"></span> If the instance fields include references to mutable objects, don’t allow those objects to be changed<br/>
+<span class="dot"></span> Don’t provide methods that modify the mutable objects.<br/>
+<span class="dot"></span> Don’t share references to the mutable objects. Never store references to external, mutable objects passed to the constructor. If necessary, create copies and store references to the copies. Similarly, create copies of our internal mutable objects when necessary to avoid returning the originals in our methods.<br/>
+
+</p>
+
+<h2>Deep and Shallow copy</h2>
+<p><span class="dot"></span><b> Shallow copy</b> of an object copies the ‘main’ object, but doesn’t copy the inner objects. The ‘inner objects’ are shared between the original object and its copy. For example, in our Person object, we would create a second Person, but both objects would share the same Name and Address objects.<br/><br/>
+<span class="dot"></span> The problem with the shallow copy is that the two objects are not independent. If you modify the Name object of one Person, the change will be reflected in the other Person object.<br/><br/>
+<span class="dot"></span> Say we have a Person object with a reference variable mother; then, we make a copy of mother, creating a second Person object, son. If later on in the code, the son tries to <code class="java-code">moveOut()</code> by modifying his Address object, the mother moves with him! This occurs because our mother and son objects share the same Address object.<br/>
+<pre><code class="java-code">public class Person {
+    private Name name;
+    private Address address;
+    public Person(Person originalPerson) {
+         this.name = originalPerson.name;
+         this.address = originalPerson.address;
+    }
+[…]
+}
+<code class="code-comment">//main </code>
+Person mother = new Person(new Name(…), new Address(…));
+[…]
+Person son  = new Person(mother);
+[…]
+son.moveOut(new Street(…), new City(…));</code></pre>
+
+<span class="dot"></span><b> Deep Copy</b> unlike the shallow copy, a deep copy is a fully independent copy of an object. If we copied our Person object, we would copy the entire object structure.<br/><br/>
+<span class="dot"></span> A change in the Address object of one Person wouldn’t be reflected in the other object. If we take a look at the code in example , you can see that we’re not only using a copy constructor on our Person object, but we are also utilizing copy constructors on the inner objects as well.<br/><br/>
+<span class="dot"></span> Using this deep copy, we can retry the mother-son example. Now the son is able to successfully move out!.<br/>
+However, that’s not the end of the story. To create a true deep copy, we need to keep copying all of the Person object’s nested elements, until there are only primitive types and “Immutables” left. Let’s look at the Street class to better illustrate this:<br/><br/>
+
+<pre><code class="java-code">public class Person {
+    private Name name;
+    private Address address;
+    public Person(Person otherPerson) {
+         this.name    =  new Name(otherPerson.name);
+         this.address =  new Address(otherPerson.address);
+    }
+[…]
+}
+<code class="code-comment">//keep copying all of the Person object’s nested elements, 
+//until there are only primitive types and “Immutables” left </code>
+public class Street {
+    private String name;
+    private int number;
+    public Street(Street otherStreet){
+         this.name = otherStreet.name;
+         this.number = otherStreet.number;
+    }
+[…]
+}</code></pre>
+
+</p>
+
+<h2>Serializable and Externalizable</h2>
+<p>
+<span class="dot"></span> The Java's <code class="java-code">java.io.Serializable</code> is a marker interface, means that it contains no methods or fields and serves only to identify the semantics of being serializable. Therefore, a class implementing Serializable does not have to implement any specific methods . It is just used to "mark" java classes that their state can be serialized or deserialized.<br/><br/>
+
+<b>If you try to serialize an object of a class which implements serializable, but the object includes a reference to an non-serializable class then a NotSerializableException will be thrown at runtime.</b><br/><br/>
+
+<span class="dot"></span> The serialization runtime associates with each serializable class a version number, called a <b>serialVersionUID</b>, which is used during <b>deserialization</b> to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. If the receiver has loaded a class for the object that has a different serialVersionUID than that of the corresponding sender's class, then deserialization will result in an <b>InvalidClassException</b>. A serializable class can declare its own serialVersionUID explicitly by declaring a field named <b>serialVersionUID</b> that must be static, final, and of type long:<br/><br/>
+
+<code class="java-code">ANY-ACCESS-MODIFIER static final long serialVersionUID = 42L;</code><br/><br/>
+
+<span class="dot"></span> If a serializable class does not explicitly declare a serialVersionUID, then the serialization runtime will calculate a default serialVersionUID value for that class based on various aspects of the class, as described in the Java(TM) Object Serialization Specification.<br/><br/>
+
+<span class="dot"></span> <b>Externalizable</b> provides us <code class="java-code">writeExternal()</code> and <code class="java-code">readExternal()</code> method which gives us flexibility to control java serialization mechanism instead of relying on Java's default serialization. Correct implementation of Externalizable interface can improve performance of application drastically.
+
+<pre><code class="java-code"><code class="code-comment">// Serialization </code>
+try{    
+    <code class="code-comment">//Saving of object in a file </code>
+    FileOutputStream file = new FileOutputStream(filename); 
+    ObjectOutputStream out = new ObjectOutputStream(file); 
+              
+    <code class="code-comment">// Method for serialization of object </code>
+    out.writeObject(object); 
+              
+    out.close(); 
+    file.close(); 
+              
+    System.out.println("Object has been serialized"); 
+  
+} 
+
+<code class="code-comment">// Deserialization </code>
+try{    
+    <code class="code-comment">// Reading the object from a file </code>
+    FileInputStream file = new FileInputStream(filename); 
+    ObjectInputStream in = new ObjectInputStream(file); 
+              
+    <code class="code-comment">// Method for deserialization of object </code>
+    object1 = (Demo)in.readObject(); 
+              
+    in.close(); 
+    file.close(); 
+              
+    System.out.println("Object has been deserialized "); 
+} </code></pre>
+</p>
+
+<h2>Shuffle ArrayList</h2>
+<p><span class="dot"></span> <b>Collections.shuffle() is used to shuffle lists in java.</b><br/>
+<pre><code class="java-code">Collections.shuffle(mylist);
+
+<code class="code-comment">// Here we use Random() to shuffle given list.</code> 
+Collections.shuffle(mylist, new Random()); 
+
+<code class="code-comment">// Here we use Random(3) to shuffle given list. Here 3 </code>
+<code class="code-comment">// is seed value for Random. </code>
+Collections.shuffle(mylist, new Random(3)); </code></pre>
+
+<span class="dot"></span> <b>Function to generate a random permutation of arr[].</b><br/><br/>
+<pre><code class="java-code">static void randomize( int arr[], int n) 
+{ 
+    Random r = new Random(); 
+           
+<code class="code-comment">// Start from the last element and swap one by one.</code>
+    for (int i = n-1; i > 0; i--){ 
+               
+<code class="code-comment">// Pick a random index from 0 to i</code> 
+        int j = r.nextInt(i); 
+               
+<code class="code-comment">// Swap arr[i] with the element at random index </code>
+        int temp = arr[i]; 
+        arr[i] = arr[j]; 
+        arr[j] = temp; 
+    } 
+} 
+
+<code class="code-comment">// main method </code>
+ public static void main(String[] args)  
+    {          
+         int[] arr = {1, 2, 3, 4, 5, 6, 7, 8}; 
+         int n = arr.length; 
+         randomize (arr, n); 
+    }
+	
+</code></pre>
+</p>
+
+<h2>Reverse a String</h2>
+<p><span class="dot"></span> <b>Reverse String using toCharArray().</b><br/>
+<pre><code class="java-code">public static void main(String[] args) {
+	String s = "sachin";
+	for (int i =s.length()-1; i>=0;i--) {
+		s=s + s.toCharArray()[i];
+	}
+}
+</code></pre>
+<p><span class="dot"></span> <b>Using Recurrsion.</b><br/>
+<pre><code class="java-code">public static String reverse(String str) { 
+	if ((str==null)||(str.length() <= 1)) {
+		return str;
+	}
+	else
+		{ 
+		return str.substring(str.length()-1) + reverse(str.substring(0,str.length()-1)); 
+		} 
+}
+</code></pre>
+
+</p>
+
+<h2>S.O.L.I.D Principles</h2>
+<p><span class="dot"></span> S.O.L.I.D represents five principles of Java which are:<br/><br/>
+<b>S:</b> Single responsibility principle<br/>
+<b>O:</b> Open-closed principle<br/>
+<b>L:</b> Liskov substitution principle<br/>
+<b>I:</b> Interface segregation principle<br/>
+<b>D:</b> Dependency inversion principle<br/><br/>
+
+<span class="dot"></span> According to the <b>single responsibility principle</b>, there should be only one reason due to which a class has to be changed. It means that a class <b>should have one task to do.</b><br/>
+The principle can be well understood with an example. Imagine there is a class which performs following operations.<br/>
+<b>connected to a database.</b><br/>
+<b>read some data from database tables.</b><br/>
+<b>finally, write it to a file.</b><br/>
+Have you imagined the scenario? Here the class has multiple reasons to change, and few of them are the modification of file output, new data base adoption. When we are talking about single principle responsibility, we would say, there are too many reasons for the class to change; hence, it doesn’t fit properly in the single responsibility principle.<br/><br/>
+
+<span class="dot"></span> According to <b>open closed principle</b>, entities or objects should remain open for extension, but they should stay closed for modification. To be precise, according to this principle, a class should be written in such a manner that it performs its job flawlessly without the assumption that people in the future will simply come and change it. Hence, the class should remain closed for modification, but it should have the option to get extended. Ways of extending the class include:<br/>
+<b>Inheriting from the class.</b><br/>
+<b>Overwriting the required behaviors from the class.</b><br/>
+<b>Extending certain behaviors of the class.</b><br/><br/>
+
+<span class="dot"></span> <b>Liskov substitution principle</b> the only thing is that every subclass or derived class should be substitutable for their parent or base class.
+You can say that it is a unique object-oriented principle. The principle can further be simplified by understanding this principle; a child type of a particular parent type without making any complication or blowing things up should have the ability to stand in for that parent. This principle is closely related to <b>Liskov Substitution principle.</b><br/><br/>
+
+<span class="dot"></span> According to <b>interface segregation principle</b>, a client, no matter what should <b>never be forced to implement an interface that it does not use</b> or the client should never be obliged to depend on any method, which is not used by them.<br/>
+So basically, the interface segregation principles as you prefer the interfaces, which are small but client specific instead of monolithic and bigger interface.<br/><br/>
+
+<span class="dot"></span> According to <b>dependency inversion principle</b>, entities should depend only on abstractions but not on concretions. According to it, the <b>high-level module must never rely on any low-level module</b> but should depend on abstractions.
+</p>
+	
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; JavaPrep 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
