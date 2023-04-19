@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Core Java - Interview Preparation</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">JavaPrep</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Core Java</h1>
+			<h2>Interview Preparation</h2>
+            <span class="meta">
+              <a href="#">last updated on</a>
+               June 24, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+   <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-15 mx-auto">
+		
+		<h2>Spring and Spring Boot</h2>
+         <p>	
+			<span class="dot"></span> Spring is a lightweight Java EE application framework used to build applications and framework of frameworks because it provides support to various frameworks 
+			such as JSP, Hibernate, etc. Spring framework helps to create loosely coupled applications.<br/><br/>
+
+			<span class="dot"></span> The primary feature of the Spring framework is dependency injection(Dependency Injection (DI) is a design technique 
+			that removes dependencies from computer code, making the application easier to maintain and test).<br/>
+			<b>Problems with Spring</b><br/>
+			Huge Framework</b><br/>
+			Multiple setup steps<br/>
+			Multiple configuration steps<br/>
+			Boilerplate configurations required for setting up a Spring application<br/>
+			Multiple build and deploy steps <br/><br/>
+			
+			<span class="dot"></span> Spring boot makes it easy to create stand-alone,production grade spring based applications that you can "just run".
+			Spring Boot is basically an extension of the Spring framework, which eliminates the boilerplate configurations required for setting up a Spring application.
+			Opinionated ‘starter' dependencies to simplify the build and application configuration
+			Embedded server to avoid complexity in application deployment
+			Metrics, Health check, and externalized configuration
+			Automatic config for Spring functionality – whenever possible
+			Spring Boot provides support for the in-memory database such as H2<br/><br/>
+			
+			<span class="dot"></span> The primary feature of the Spring Boot is Autoconfiguration. Spring Boot autoconfiguration is a method of automatically configuring a 
+			Spring application based on the Jar dependencies that you have added.
+			Autoconfiguration can speed up and simplify development by removing the need to define some beans that are part of the auto-configuration classes.<br/><br/>
+			
+			<span class="dot"></span> <b>Opinionated:</b><br/>
+			Spring Boot just decides on a set of default configured beans which you can override if you want.
+			For example if you include the spring boot starter pom for jpa, you'll get auto-configured for you an in memory database, a hibernate entity manager, 
+			and a simple data source. This is an example of an opinionated (Spring's opinion that it's a good starting point) default configuration that you can override.<br/><br/>
+
+			<span class="dot"></span> <b>Bill of Material:</b><br/> 
+			The preset list of possible combination of jars that work well without any issue is called bill of material. 
+			There are certain combination of jars and their version that work well and approved by the Spring boot.
+			So all we need to do is pick that version of that list and we get all the preset value with it so we don’t have to worry about individual version numbers anymore.
+			We just need to have version of the parent only<br/><br/>
+			
+			<span class="dot"></span> <b>Embedded Tomcat Server:</b><br/>
+			Convenience: Don’t have to download and install and all.<br/>
+			Servlet Container Config is now application config: In tomcat we also need to do some default configuration, 
+			but with tomcat embedded we don’t have to do it as this is part of the application config. Because everything is in one package.<br/>
+			Useful for micro services architecture: We don’t have to do additional steps to deploy  each micro services separately.<br/><br/>
+			
+			<span class="dot"></span> <b>CrudRepository:</b><br/> 
+			Having default CRUD operation we have to just call the same.
+			However if we want some new methods we have to declare the correct method name without implementing the same.
+			Example: If I need to search courses by topic Id and there is a reference of topic class in course class, then the method declaration would be like, 
+			FindBy<PropertyName<PropertyName>>. Since we have a reference of another class we have to give the property name for that class also.<br/><br/>
+		</p>
+		<h2>@Controller vs @RestController</h2>
+         <p>
+			
+			<span class="dot"></span> @Controller is used to create web controllers that return views, which is further resolved by view resolver, 
+			while @RestController is used to create web services that return JSON or XML data.
+			@RestController is a convenience annotation that does nothing more than adding the @Controller and @ResponseBody annotations
+			The @ResponseBody is activated by default when @RestController is used. You don't need to add it above the function signature.
+			With @RestController it will automatically convert the return object to JSON format or list or retun objects to JSON format, 
+			we don’t have to explicitly mention the return type.
+			<br/><br/>
+		</p>
+			
+		<h2>@SpringBootApplication vs @EnableAutoConfiguration</h2>
+         <p>
+			
+			<span class="dot"></span> <b>@EnableAutoConfiguration</b> annotation tells Spring Boot to "guess" how you will want to configure Spring, 
+			based on the jar dependencies that you have added. For example, If HSQLDB is on your classpath and you have not manually configured any database connection beans, 
+			then Spring will auto-configure an in-memory database.<br/>
+			<b>@ComponentScan</b> tells Spring to look for other components, configurations, and services in the specified package. Spring is able to auto scan, 
+			detect and register your beans or components from pre-defined project package. If no package is specified current class package is taken as the root package.<br/>
+			If you need Spring boot to Auto configure every thing for you @EnableAutoConfiguration is required. You don't need to add it manually, 
+			spring will add it internally for you based on the annotation you provide.<br/>
+			<b>@SpringBootApplication annotation is equivalent to using @Configuration, @EnableAutoConfiguration and @ComponentScan with their default attributes.</b>
+			<br/><br/>
+		</p>
+		
+		<h2>@Configuration vs @Component</h2>
+         <p>
+			
+			<span class="dot"></span> <b>@Configuration</b> Indicates that a class declares one or more @Bean methods and may be processed by the Spring container to generate bean 
+			definitions and service requests for those beans at runtime.<br/>
+			<b>@Component</b> Indicates that an annotated class is a "component". Such classes are considered as candidates for auto-detection when using annotation-based 
+			configuration and classpath scanning.<br/>
+			<b>@Configuration</b> is meta-annotated with <b>@Component</b>, therefore @Configuration classes are candidates for component scanning
+			But you do can create i.e MyConfiguration.java class then stereotype with @Component and add @Beans declaration to it. In this way it will looks as a configuration,
+			main difference is that when annotated class with @Configuration @Bean annotated methods are proxy using CGLIB which made in code calls after the first one to 
+			return bean from context instead of execute method again and create another instance as happens when using @Component with @Bean
+		<br/><br/>
+		</p>
+
+		<h2>The @Produces Annotation</h2>
+         <p>
+			
+			<span class="dot"></span> The @Produces annotation is used to specify the MIME media types or representations a resource can produce and send back to the client. 
+			If @Produces is applied at the class level, all the methods in a resource can produce the specified MIME types by default. If it is applied at the method level, 
+			it overrides any @Produces annotations applied at the class level.<br/>
+			If no methods in a resource are able to produce the MIME type in a client request, the Jersey runtime sends back an HTTP “406 Not Acceptable” error.<br/>
+			The value of @Produces is an array of String of MIME types. For example:<br/>
+			@Produces({"image/jpeg,image/png"})<br/>
+			@Produces({"application/xml", "application/json"})
+
+		<br/><br/>
+		</p>
+
+		<h2>The @Consumes Annotation</h2>
+         <p>
+			
+			<span class="dot"></span> The @Consumes annotation is used to specify which MIME media types of representations a resource can accept, or consume, from the client. 
+			If @Consumes is applied at the class level, all the response methods accept the specified MIME types by default. If @Consumes is applied at the method level, 
+			it overrides any @Consumes annotations applied at the class level.<br/>
+			If a resource is unable to consume the MIME type of a client request, the Jersey runtime sends back an HTTP “415 Unsupported Media Type” error.<br/>
+			The value of @Consumes is an array of String of acceptable MIME types. For example:<br/>
+			@Consumes({"text/plain,text/html"})
+
+		<br/><br/>
+		</p>
+	
+		<h2>Jackson Annotations</h2>
+         <p>
+			
+			<span class="dot"></span> The <b>@JsonIgnore</b> annotation marks a field in a POJO to be ignored by Jackson during serialization and deserialization. 
+			Jackson ignores the field in both JSON serialization and deserialization.
+			<br/><br/>
+			<span class="dot"></span>The <b>@JsonIgnoreProperties</b> annotation is used at the class level to ignore fields during serialization and deserialization. 
+			The properties that are declared in this annotation will not be mapped to the JSON content.<br/>
+			Example: @JsonIgnoreProperties({"userId","gender"})
+			<br/><br/>
+			<span class="dot"></span>The <b>@JsonIgnoreType</b> annotation is used to mark a class to be ignored during serialization and deserialization. 
+			It marks all the properties of the class to be ignored while generating and reading JSON. 
+			<br/><br/>
+			<span class="dot"></span>The <b>@JsonAutoDetect</b> annotation is used at the class level to tell Jackson to override the visibility of the 
+			properties of a class during serialization and deserialization. 
+			<br/><br/> 
+		</p>
+
+		<h2>Annotations</h2>
+         <p>		
+			<span class="dot"></span><b>@ResponseBody</b> annotation in the method level, Spring will convert the return object in to the http response body.<br/>
+			<span class="dot"></span><b>@ResponseEntity</b> works similar as @ResponseBody annotation. But when you create ResponseEntity object, you can add the response header to the http response as well.
+			If you use ResponseEntity as return object, then you don’t need to use @ResponseBody annotation.<br/>
+			<span class="dot"></span><b>@RequestBody</b> annotation aside the parameter in a method, Spring will convert the http request body to that declare class type in the method signature.<br/>
+			<span class="dot"></span><b>@HttpEntity</b> works smilar as @RequestBody annotation. Plus you can access the http header from HttpEntity object, which @RequestBody annotation doesn’t offer.
+			If you use HttpEntity as parameter object, then you don’t need to use @RequestBody annotation.<br/><br/>
+			
+			<span class="dot"></span><b>@Autowired and @Inject</b><br/>
+			Matches by Type<br/>
+			Restricts by Qualifiers<br/>
+			Matches by Name<br/><br/>
+
+			<span class="dot"></span><b>@Resource</b><br/>
+			Matches by Name<br/>
+			Matches by Type<br/>
+			Restricts by Qualifiers (ignored if match is found by name)<br/><br/>
+
+			<span class="dot"></span><b>Which annotations (or combination of) should I use for injecting my beans?</b><br/>
+			Explicitly name your component [@Component("beanName")]<br/>
+			Use @Resource with the name attribute [@Resource(name="beanName")]<br/><br/>
+
+			<span class="dot"></span><b>Why should I not use @Qualifier?</b><br/>
+			Avoid @Qualifier annotations unless you want to create a list of similar beans. For example you may want to mark a set of rules with a specific @Qualifier annotation. 
+			This approach makes it simple to inject a group of rule classes into a list that can be used for processing data.<br/><br/>
+			
+			<span class="dot"></span><b>Does bean injection slow my program?</b><br/>
+			Scan specific packages for components [context:component-scan base-package="com.sourceallies.person"]. While this will result in more component-scan configurations it reduces 
+			the chance that you’ll add unnecessary components to your Spring context.<br/><br/>
+			
+			<span class="dot"></span><b>@Bean</b> To declare a bean, simply annotate a method with the @Bean annotation. When JavaConfig encounters such a method, it will execute that method and register the 
+			return value as a bean within a BeanFactory. By default, the bean name will be the same as the method name. <br/><br/>
+			
+			<span class="dot"></span><b>@Component</b> is an annotation that allows Spring to detect our custom beans automatically.
+			In other words, without having to write any explicit code, Spring will:<br/>
+			<span class="dot"></span>Scan our application for classes annotated with @Component<br/>
+			<span class="dot"></span>Instantiate them and inject any specified dependencies into them<br/>
+			<span class="dot"></span>Inject them wherever needed<br/>
+			< context:component-scan > only scans @Component and does not look for @Controller, @Service and @Repository in general. 
+			They are scanned because they themselves are annotated with @Component <br/><br/>
+
+			<span class="dot"></span><b> @Controller</b>
+			The @Controller annotation indicates that a particular class serves the role of a controller. The @Controller annotation acts as a stereotype for the annotated class, indicating its role.<br/>
+			<span class="dot"></span><b> What’s special about @Controller?</b><br/>
+			We cannot switch this annotation with any other like @Service or @Repository, even though they look same. The dispatcher scans the classes annotated with @Controller 
+			and detects methods annotated with @RequestMapping annotations within them. We can use @RequestMapping on/in only those methods whose classes are annotated with 
+			@Controller and it will NOT work with @Component, @Service, @Repository etc...<br/><br/>
+			
+			<span class="dot"></span><b> @Service</b>
+			@Service beans hold the business logic and call methods in the repository layer.<br/>
+			<span class="dot"></span><b> What’s special about @Controller?</b><br/>
+			Apart from the fact that it's used to indicate, that it's holding the business logic, there’s nothing else noticeable in this annotation; but who knows, Spring may add some additional exceptional in future.<br/><br/>
+
+			<span class="dot"></span><b> @Repository</b>
+			This is to indicate that the class defines a data repository.<br/>
+			<span class="dot"></span><b> What’s special about @Controller?</b><br/>
+			In addition to pointing out, that this is an Annotation based Configuration, @Repository’s job is to catch platform specific exceptions and re-throw them as one of Spring’s unified unchecked exception. 
+			For this, we’re provided with <b>PersistenceExceptionTranslationPostProcessor</b>, that we are required to add in our Spring’s application context like this:<br/>
+			<b>< bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" /></b><br/><br/>
+			This bean post processor adds an advisor to any bean that’s annotated with @Repository so that any platform-specific exceptions are caught and then re-thrown as one of Spring’s unchecked data access exceptions.<br/><br/>
+			<b>DataAccessException translation</b><br/>
+			The @Repository annotation can have a special role when it comes to converting database exceptions to Spring-based unchecked exceptions.<br/>
+			For example, when we work with Hibernate and we do not use a Spring template (e.g. JdbcTemplate) to interact with database. In this case, if hibernate threw an exception then spring will not convert it to Spring-based exception.<br/>
+			To automatically convert such non-spring exceptions to spring exceptions, we shall annotate Hibernate DAOs with @Repository. This way, PersistenceExceptionTranslationPostProcessor will applly persistence exception translation and converts native resource exceptions to Spring’s DataAccessException hierarchy.
+		</p>
+		
+		<h2>Bean Exceptions</h2>
+         <p>		
+			<span class="dot"></span><b>NoSuchBeanDefinitionException</b> Exception thrown when a BeanFactory is asked for a bean instance for which it cannot find a definition. This may point to a non-existing bean, a non-unique bean, or a manually registered singleton instance without an associated bean definition.<br/>
+			Suppose there is one object reference in the class that we are not creating the object of that class( is not defined in the Spring Context) during application starts then we cannot use @Autowired (Required=true) it will throw above exception, Hence we need to put Required=false.
+			<br/><br/>
+			<span class="dot"></span><b>NoUniqueBeanDefinitionException.</b>When we have a autowired reference of a interface or parent class without any qualifier and there are multiple child classes then above exception will be thrown.<br/>
+			Add Qualifier to resolve the type. <b>@Qualifier("beanName")</b>
+
+		</p>
+	
+		<h2>Spring bean life cycle</h2>
+         <p>
+			Spring framework provides following 4 ways for controlling life cycle events of a bean:<br/>
+			<span class="dot"></span><b> InitializingBean</b> (void afterPropertiesSet() throws Exception) and <b>DisposableBean</b> (void destroy() throws Exception) callback interfaces<br/>
+			 InitializingBean interface allows a bean to perform initialization work after all necessary properties on the bean have been set by the container. The afterPropertiesSet() method is not a preferable way to initialize the bean because it tightly couples the bean class with the spring container. 
+			 A better approach is to use “init-method” attribute in bean definition in applicationContext.xml.<br/>
+			 DisposableBean interface allows a bean to get a callback before the Spring container destroys the bean.<br/>
+			<span class="dot"></span><b> Aware interfaces for specific behavior</b> Spring Aware interfaces allow you to look into the inner workings of the Spring Framework. Through Spring Aware interfaces, you can access the Spring context, or Spring bean lifecycle events.<br/>
+			<b>ApplicationContextAware:</b> void setApplicationContext (ApplicationContext applicationContext) throws BeansException; Spring provides an ApplicationContextAware interface that allows beans access to the ApplicationContext
+			For example, if your bean needs to look up some other beans. Similarly, if your bean needs access to some application file resource in your bean or even publish some application events, you need access to the ApplicationContext.<br/>
+			<b>BeanNameAware:</b> void setBeanName(String name); The BeanNameAware interface is implemented by beans that need access to its name defined in the Spring container.<br/>
+			<b>BeanFactoryAware:</b> void setBeanFactory (BeanFactory beanFactory) throws BeansException; Beans might need access to the bean factory that created it, to call any service from the bean factory.
+			Should you need to obtain a reference to the bean factory, implement the BeanFactoryAware interface.<br/>
+			<span class="dot"></span>Custom <b>init()</b> and <b>destroy()</b> methods in bean configuration file<br/>
+			These methods can be defined in two ways: Bean local definition to a single bean and Global definition applicable to all beans defined in bean context<br/>
+			<span class="dot"></span><b>@PostConstruct and @PreDestroy annotations</b><br/>
+			@PostConstruct annotated method will be invoked after the bean has been constructed  using default constructor and just before its instance is returned to requesting object.<br/>
+			@PreDestroy annotated method is called just before the bean is about to destroyed inside the bean container.
+			
+
+
+		</p>
+		
+		<h2>What is the use of ContextLoaderListener in Spring MVC?</h2>
+         <p>		
+			<span class="dot"></span> The ContextLoaderListner is one of the essential components of the Spring MVC framework, probably the most important after the DispatcherServlet itself.
+			It is used to create the root context and responsible for loading beans, which are shared by multiple DispatcherServlet like beans related to the service layer and data access 
+			layer. In general, When you develop Spring MVC based web application and also using Spring in the services layer, you need to provide two application-contexts.
+			The first one is configured using ContextLoaderListener, and the other is set using DispatcherServlet. The DispatcherServlet is responsible for loading web component-specific 
+			beans like controllers, view resolvers, and handler mappings while, as I said before, ContextLoaderListener is accountable for loading middle-tier and data-tier 
+			beans which forms the back end of Spring applications.<br/><br/>
+			<span class="dot"></span> The ContextLoaderListener is like any other Servlet listener, and it has to be declared in the deployment descriptor to listen to events. 
+			It listens for startup and shutdown of the server by implementing ServletContextListener and accordingly creates and destroys Spring-managed beans.<br/><br/>
+			<span class="dot"></span> Though, web.xml is just one way to configure ContextLoaderListener in Spring MVC application. From Spring 3.1 and Servlet 3.0, 
+			you can also configure ContextLoaderListener without deployment descriptor and only using Java Configurations.<br/><br/>
+		</p>
+		
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; JavaPrep 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
